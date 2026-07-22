@@ -1,0 +1,8 @@
+# não publicar arquivos com dado pessoal ou rascunhos
+resumo_plano.md
+guia_treino.html
+melhorias.md
+preview.html
+*.bak.html
+index.bak.html
+addcoice.js

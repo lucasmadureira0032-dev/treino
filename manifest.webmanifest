@@ -1,0 +1,14 @@
+{
+  "name": "Guia de Treino",
+  "short_name": "Treino",
+  "description": "Treino, dieta, água e suplementos num lugar só.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0A6E68",
+  "theme_color": "#0E8F87",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
