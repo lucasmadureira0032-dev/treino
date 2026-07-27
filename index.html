@@ -407,13 +407,13 @@ let uid = null, syncTimer = null, suppressSync = false;
 function setSync(t){ const e = document.getElementById('sync'); if(e) e.textContent = t; }
 function scheduleSync(){
   if(!uid || suppressSync) return;
-  setSync('salvando…'); clearTimeout(syncTimer); syncTimer = setTimeout(pushCloud, 700);
+  setSync('Salvando…'); clearTimeout(syncTimer); syncTimer = setTimeout(pushCloud, 700);
 }
 async function pushCloud(){
   if(!uid) return;
   try{
     const { error } = await sb.from('app_state').upsert({ user_id: uid, data: { log: LOG, subs: SUBS }, updated_at: new Date().toISOString() });
-    setSync(error ? 'offline' : 'salvo ✓');
+    setSync(error ? 'offline' : 'Salvo ✓');
   }catch(e){ setSync('offline'); }
 }
 async function pullCloud(){
@@ -532,36 +532,6 @@ const days = [
      q:"abdominal bicicleta execução correta"}
    ]},
 
- { id:"casa", tab:"Casa", wd:null, title:"Treino em Casa", tag:"Sem academia",
-   note:"Para os dias que a academia não rola. Só peso do corpo, respeitando joelho e ombro.",
-   ex:[
-    {id:"flexao", name:"Flexão de braço", reps:"3×12", img:"flexao", noload:true,
-     q:"flexão de braço execução correta",
-     sh:"Cotovelo perto do corpo. Abrir demais castiga o ombro."},
-    {id:"flexao_inclinada", name:"Flexão inclinada", reps:"3×12", img:"flexao_inclinada", noload:true,
-     q:"flexão inclinada no sofá execução correta"},
-    {id:"remada_mochila", name:"Remada com mochila", reps:"3×12", img:"remada_mochila",
-     q:"remada com mochila em casa como fazer"},
-    {id:"agach_livre", name:"Agachamento livre", reps:"3×15", img:"agach_livre", noload:true,
-     q:"agachamento livre execução correta",
-     kn:"Desça devagar e sem travar o joelho no fim. Nada de salto."},
-    {id:"agach_sumo", name:"Agachamento sumô", reps:"3×15", img:"agach_sumo",
-     q:"agachamento sumô execução correta",
-     kn:"Pés bem abertos, o que alivia o joelho."},
-    {id:"elev_pelvica_casa", name:"Elevação pélvica", reps:"4×20", img:"elev_pelvica", noload:true,
-     q:"elevação pélvica em casa execução correta",
-     kn:"O joelho quase não trabalha. Pode fazer sem medo."},
-    {id:"cadeira_isometrica", name:"Cadeira isométrica na parede", reps:"3×30s", img:null, noload:true,
-     q:"cadeira isométrica na parede como fazer",
-     kn:"Doeu o joelho a 90°, suba um pouco. Fique num ângulo confortável."},
-    {id:"prancha_casa", name:"Prancha frontal", reps:"3×45s", img:"prancha", noload:true,
-     q:"prancha frontal execução correta"},
-    {id:"prancha_lateral", name:"Prancha lateral", reps:"3×30s", img:"prancha_lateral", noload:true,
-     q:"prancha lateral execução correta"},
-    {id:"abd_bicicleta_casa", name:"Abdominal bicicleta", reps:"3×20", img:"abd_bicicleta", noload:true,
-     q:"abdominal bicicleta execução correta"}
-   ]},
-
  { id:"dieta", tab:"Dieta", wd:null, type:"diet", title:"Dieta do dia", tag:"~1.650 kcal · 117 g" },
  { id:"agua", tab:"Água", wd:null, type:"water", title:"Água", tag:"Meta 3,5 L" },
  { id:"supl", tab:"Supl.", wd:null, type:"supp", title:"Suplementos", tag:"Diário" },
@@ -595,7 +565,7 @@ const WARMUPS = {
     {t:"Corrida leve progressiva", q:"aquecimento corrida leve antes do futebol"},
     {t:"Deslocamentos laterais", q:"aquecimento deslocamento lateral futebol"}]}
 };
-const WARM_BY_DAY = { seg:'upper', qua:'lower', sex:'upper', casa:'home', qui:'soccer' };
+const WARM_BY_DAY = { seg:'upper', qua:'lower', sex:'upper', qui:'soccer' };
 function warmupCard(d){
   const key = WARM_BY_DAY[d.id]; if(!key) return '';
   const w = WARMUPS[key]; const s = session();
@@ -1083,7 +1053,7 @@ async function enterApp(user){
   suppressSync = true; await pullCloud(); suppressSync = false;
   await loadPlan();
   updateHero(); go(active.id);
-  setSync('salvo ✓');
+  setSync('Salvo ✓');
 }
 const gEmail = document.getElementById('gEmail'), gPass = document.getElementById('gPass'), gMsg = document.getElementById('gMsg');
 function gmsg(t,c){ gMsg.textContent = t; gMsg.className = 'gate-msg ' + (c||''); }
