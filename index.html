@@ -79,6 +79,9 @@
     background:var(--accent);padding:2px 6px;border-radius:5px;margin-left:6px;vertical-align:middle;}
   .ex-swapped{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.08em;
     color:var(--ink);background:#E8EDF2;padding:2px 6px;border-radius:5px;margin-left:6px;vertical-align:middle;}
+  .ex-mg{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.03em;
+    color:var(--accent);background:rgba(18,166,156,.12);padding:2px 8px;border-radius:20px;
+    margin-left:6px;vertical-align:middle;white-space:nowrap;}
   .ex-reps{font-family:'Oswald',sans-serif;font-size:14px;color:var(--ink-soft);margin-top:3px;}
 
   .sets{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px;}
@@ -443,33 +446,30 @@ const days = [
  { id:"seg", tab:"Seg", wd:1, title:"Upper A", tag:"Costas + Peito",
    note:"Puxada em primeiro lugar para poupar o ombro esquerdo. Suba a carga a cada duas semanas.",
    ex:[
-    {id:"puxada_neutra", name:"Puxada na polia frente", reps:"4×10", img:"puxada_neutra",
+    {id:"puxada_neutra", name:"Puxada na polia frente", reps:"4×10", img:"puxada_neutra", mg:"Costas",
      q:"puxada polia frente pegada neutra execução correta",
      sh:"Pegada neutra. Não force o ombro no fim do movimento.",
      alts:[{name:"Puxada pegada aberta", img:"puxada_aberta", q:"puxada polia pegada aberta execução correta"}]},
-    {id:"pullover_polia", name:"Pullover na polia", reps:"3×12", img:"pullover_polia", isNew:true,
+    {id:"pullover_polia", name:"Pullover na polia", reps:"3×12", img:"pullover_polia", mg:"Costas", isNew:true,
      q:"pullover na polia execução correta",
      sh:"Braço quase estendido, movimento controlado. Não jogue o braço para trás."},
-    {id:"remada_maquina", name:"Remada sentado na máquina", reps:"4×10", img:"remada_maquina",
+    {id:"remada_maquina", name:"Remada sentado na máquina", reps:"4×10", img:"remada_maquina", mg:"Costas",
      q:"remada sentada máquina execução correta",
      alts:[{name:"Remada baixa na polia", img:"remada_baixa", q:"remada baixa polia execução correta"}]},
-    {id:"remada_serrote", name:"Remada unilateral com halter (serrote)", reps:"3×12", img:"remada_serrote",
+    {id:"remada_serrote", name:"Remada unilateral com halter (serrote)", reps:"3×12", img:"remada_serrote", mg:"Costas",
      q:"remada unilateral com halter serrote execucao correta",
      sh:"Apoia a mão e o joelho no banco. Puxa o cotovelo rente ao corpo, sem girar o ombro."},
-    {id:"supino_halteres", name:"Supino com halteres", reps:"4×12", img:"supino_halteres",
+    {id:"supino_halteres", name:"Supino com halteres", reps:"4×12", img:"supino_halteres", mg:"Peito",
      q:"supino reto com halteres execução correta",
      sh:"Pare quando o cotovelo chegar na linha do peito. Mais fundo que isso força o ombro.",
      alts:[{name:"Supino na máquina", img:"supino_maquina", q:"supino máquina execução correta",
             sh:"Ajuste o banco para o punho ficar na linha do peito."}]},
-    {id:"rosca_direta", name:"Rosca direta", reps:"3×12", img:"rosca_direta",
+    {id:"rosca_direta", name:"Rosca direta", reps:"3×12", img:"rosca_direta", mg:"Bíceps",
      q:"rosca direta barra execução correta"},
-    {id:"triceps_corda", name:"Tríceps corda na polia", reps:"3×12", img:"triceps_corda", isNew:true,
+    {id:"triceps_corda", name:"Tríceps corda na polia", reps:"3×12", img:"triceps_corda", mg:"Tríceps", isNew:true,
      q:"triceps corda polia execucao correta",
      alts:[{name:"Tríceps coice com halter", img:"triceps_coice", q:"triceps coice kickback halter execucao correta"}]},
-    {id:"face_pull", name:"Face pull na polia", reps:"3×15", img:"face_pull", isNew:true,
-     q:"face pull na polia execucao correta",
-     sh:"Puxe na direção do rosto com os cotovelos altos. Peso leve. É o que mais protege o ombro."},
-    {id:"prancha", name:"Prancha frontal", reps:"3×45s", img:"prancha", noload:true,
+    {id:"prancha", name:"Prancha frontal", reps:"3×45s", img:"prancha", mg:"Core", noload:true,
      q:"prancha frontal execução correta"}
    ]},
 
@@ -481,23 +481,23 @@ const days = [
  { id:"qua", tab:"Qua", wd:3, title:"Lower", tag:"Perna segura",
    note:"Comece leve. Glúteo forte tira carga do joelho. Doeu, parou.",
    ex:[
-    {id:"elev_pelvica", name:"Elevação pélvica", reps:"4×15", img:"elev_pelvica",
+    {id:"elev_pelvica", name:"Elevação pélvica", reps:"4×15", img:"elev_pelvica", mg:"Glúteo",
      q:"elevação pélvica glúteo execução correta",
      kn:"O joelho quase não trabalha aqui. É o mais seguro do dia, comece por ele."},
-    {id:"leg_press", name:"Leg press 45°", reps:"4×12", img:"leg_press",
+    {id:"leg_press", name:"Leg press 45°", reps:"4×12", img:"leg_press", mg:"Quadríceps + Glúteo",
      q:"leg press 45 graus execução correta",
      kn:"Amplitude parcial. Não desça até o joelho fechar nem trave a perna no fim.",
      alts:[{name:"Agachamento sumô com halter", img:"agach_sumo", q:"agachamento sumô halter execução correta",
             kn:"Pés bem abertos, desça só até a metade."}]},
-    {id:"cad_extensora", name:"Cadeira extensora", reps:"3×15", img:"cad_extensora",
+    {id:"cad_extensora", name:"Cadeira extensora", reps:"3×15", img:"cad_extensora", mg:"Quadríceps",
      q:"cadeira extensora execução correta",
      kn:"Vá só até três quartos da extensão. Esticar tudo aperta a patela."},
-    {id:"mesa_flexora", name:"Mesa flexora", reps:"3×15", img:"mesa_flexora",
+    {id:"mesa_flexora", name:"Mesa flexora", reps:"3×15", img:"mesa_flexora", mg:"Posterior de coxa",
      q:"mesa flexora execução correta",
      alts:[{name:"Elevação pélvica", img:"elev_pelvica", q:"elevação pélvica glúteo execução correta"}]},
-    {id:"panturrilha", name:"Panturrilha em pé", reps:"4×20", img:"panturrilha",
+    {id:"panturrilha", name:"Panturrilha em pé", reps:"4×20", img:"panturrilha", mg:"Panturrilha",
      q:"panturrilha em pé execução correta"},
-    {id:"abd_infra", name:"Abdominal infra", reps:"3×15", img:"abd_infra", noload:true,
+    {id:"abd_infra", name:"Abdominal infra", reps:"3×15", img:"abd_infra", mg:"Abdômen", noload:true,
      q:"abdominal infra execução correta"}
    ]},
 
@@ -508,33 +508,27 @@ const days = [
  { id:"sex", tab:"Sex", wd:5, title:"Upper B", tag:"Ombro + Braço",
    note:"Nada acima da cabeça e nada de elevação frontal pesada. É o que protege o ombro esquerdo.",
    ex:[
-    {id:"supino_maquina", name:"Supino máquina", reps:"4×10", img:"supino_maquina",
+    {id:"supino_maquina", name:"Supino máquina", reps:"4×10", img:"supino_maquina", mg:"Peito",
      q:"supino máquina execução correta",
      sh:"Ajuste o banco para o punho ficar na linha do peito.",
      alts:[{name:"Supino com halteres", img:"supino_halteres", q:"supino reto com halteres execução correta",
             sh:"Pare quando o cotovelo chegar na linha do peito."}]},
-    {id:"puxada_aberta", name:"Puxada polia pegada aberta", reps:"4×10", img:"puxada_aberta",
+    {id:"puxada_aberta", name:"Puxada polia pegada aberta", reps:"4×10", img:"puxada_aberta", mg:"Costas",
      q:"puxada polia pegada aberta execução correta",
      alts:[{name:"Puxada pegada neutra", img:"puxada_neutra", q:"puxada polia pegada neutra execução correta"}]},
-    {id:"elev_lateral", name:"Elevação lateral", reps:"4×15", img:"elev_lateral",
+    {id:"elev_lateral", name:"Elevação lateral", reps:"4×15", img:"elev_lateral", mg:"Ombro",
      q:"elevação lateral halteres execução correta",
      sh:"Peso leve e não passe da linha do ombro. Atenção redobrada no braço esquerdo."},
-    {id:"remada_baixa", name:"Remada baixa", reps:"3×12", img:"remada_baixa",
+    {id:"remada_baixa", name:"Remada baixa", reps:"3×12", img:"remada_baixa", mg:"Costas",
      q:"remada baixa polia execução correta",
      alts:[{name:"Remada sentado na máquina", img:"remada_maquina", q:"remada sentada máquina execução correta"}]},
-    {id:"triceps_polia", name:"Tríceps polia", reps:"3×12", img:"triceps_polia",
+    {id:"triceps_polia", name:"Tríceps polia", reps:"3×12", img:"triceps_polia", mg:"Tríceps",
      q:"tríceps pushdown polia execução correta"},
-    {id:"rosca_scott", name:"Rosca Scott com halter", reps:"3×12", img:"rosca_scott", isNew:true,
+    {id:"rosca_scott", name:"Rosca Scott com halter", reps:"3×12", img:"rosca_scott", mg:"Bíceps", isNew:true,
      q:"rosca scott com halter execução correta",
      sh:"O apoio no banco corta a compensação do ombro.",
      alts:[{name:"Rosca direta", img:"rosca_direta", q:"rosca direta barra execução correta"}]},
-    {id:"face_pull_b", name:"Face pull na polia", reps:"3×15", img:"face_pull_b", isNew:true,
-     q:"face pull na polia execucao correta",
-     sh:"Mesmo do dia de costas. Cotovelos altos, controle na volta."},
-    {id:"rot_externa", name:"Rotação externa com faixa", reps:"3×15", img:"rot_externa", isNew:true, noload:true,
-     q:"rotacao externa ombro faixa elastica execucao correta",
-     sh:"Cotovelo colado na cintura, gira só o antebraço pra fora. Movimento curto e lento."},
-    {id:"abd_bicicleta", name:"Abdominal bicicleta", reps:"3×20", img:"abd_bicicleta", noload:true,
+    {id:"abd_bicicleta", name:"Abdominal bicicleta", reps:"3×20", img:"abd_bicicleta", mg:"Abdômen", noload:true,
      q:"abdominal bicicleta execução correta"}
    ]},
 
@@ -720,6 +714,7 @@ function exCard(ex){
   h += '<div class="ex-info"><div class="ex-name">'+v.name
      + (v.isNew && !v.swapped ? '<span class="ex-new">NOVO</span>' : '')
      + (v.swapped ? '<span class="ex-swapped">TROCADO</span>' : '')
+     + (v.mg ? '<span class="ex-mg">'+v.mg+'</span>' : '')
      + '</div><div class="ex-reps">'+v.reps+'</div>';
   h += '<div class="sets">';
   for(let i=0;i<total;i++) h += '<button class="set'+(marks[i]?' on':'')+'" data-set="'+i+'">'+(i+1)+'</button>';
@@ -727,10 +722,13 @@ function exCard(ex){
 
   if(!v.noload){
     const hist = loadHistory(ex.id);
-    const cur = s.loads[ex.id] || '';
+    const today = s.loads[ex.id];
+    // hoje já anotado? usa. senão, puxa o último peso usado (mesmo exercício, qualquer dia)
+    const carried = (today === undefined || today === '') && hist.length;
+    const cur = carried ? hist[0].v : (today || '');
     h += '<div class="load"><input type="number" inputmode="decimal" step="0.5" placeholder="—" value="'+cur+'" data-load="1"><span class="unit">kg</span>';
     h += '<span class="hist">' + (hist.length
-        ? 'Última: <b>'+hist[0].v+' kg</b> em '+fmtDate(hist[0].d)
+        ? (carried ? 'Peso do último treino · toque pra ajustar' : 'Último: <b>'+hist[0].v+' kg</b> · '+fmtDate(hist[0].d))
         : 'Primeira vez neste') + '</span></div>';
   }
   if(v.kn) h += '<div class="warn"><span>🦵</span><span><b>Joelho:</b> '+v.kn+'</span></div>';
