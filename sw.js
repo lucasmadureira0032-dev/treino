@@ -1,4 +1,4 @@
-const CACHE = 'guia-treino-v6';
+const CACHE = 'guia-treino-v7';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', e => {
