@@ -1145,7 +1145,10 @@ document.getElementById('gSignup').onclick = async () => {
   if(data.session) enterApp(data.user);
   else gmsg('Conta criada. Se pedir confirmação por e-mail, confirme e clique em Entrar.', 'ok');
 };
-document.getElementById('logout').onclick = async () => { await sb.auth.signOut(); location.reload(); };
+document.getElementById('logout').onclick = async () => {
+  try { await sb.auth.signOut({ scope: 'local' }); } catch(e) {}
+  location.reload();
+};
 (async () => { const { data } = await sb.auth.getSession(); if(data.session) enterApp(data.session.user); })();
 
 /* instalar como app / funcionar offline */
