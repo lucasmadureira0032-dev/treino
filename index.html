@@ -98,6 +98,21 @@
   .load .hist{font-size:12px;color:var(--ink-soft);margin-left:auto;text-align:right;line-height:1.35;}
   .load .hist b{color:var(--ink);font-weight:600;}
 
+  .cardio-log{background:var(--water-grad,linear-gradient(135deg,#2E86DE,#1B4F8A));color:#fff;
+    border-radius:14px;padding:13px 15px;margin:14px 0;box-shadow:0 6px 16px rgba(20,60,110,.18);}
+  .cardio-log .cl-head{display:flex;align-items:center;gap:11px;}
+  .cardio-log .cl-ico{font-size:22px;line-height:1;}
+  .cardio-log .cl-txt{display:flex;flex-direction:column;}
+  .cardio-log .cl-txt b{font-family:'Oswald',sans-serif;font-size:16px;font-weight:600;}
+  .cardio-log .cl-sub{font-size:12px;opacity:.9;}
+  .cardio-log .cl-in{display:flex;align-items:center;gap:8px;margin-top:11px;}
+  .cardio-log .cl-in input{width:84px;padding:8px 10px;border:none;border-radius:9px;
+    font-size:15px;font-weight:700;text-align:center;color:#143;background:#fff;}
+  .cardio-log .cl-in input:focus{outline:2px solid #fff;outline-offset:1px;}
+  .cardio-log .cl-in .unit{font-size:13px;opacity:.95;}
+  .cardio-log .cl-in .hist{font-size:12px;opacity:.95;margin-left:auto;text-align:right;line-height:1.35;}
+  .cardio-log .cl-in .hist b{font-weight:700;}
+
   .warn{display:flex;gap:8px;font-size:12.5px;color:var(--warn);background:var(--warn-bg);
     border-radius:9px;padding:8px 10px;margin-top:10px;line-height:1.4;}
   .warn.sh{color:var(--sh);background:var(--sh-bg);}
@@ -443,42 +458,57 @@ async function loadPlan(){
 
 /* ---------- data ---------- */
 const days = [
- { id:"seg", tab:"Seg", wd:1, title:"Upper A", tag:"Costas + Peito",
-   note:"Puxada em primeiro lugar para poupar o ombro esquerdo. Suba a carga a cada duas semanas.",
+ { id:"a", tab:"A", wd:null, title:"Treino A — Empurrar", tag:"Peito · Ombro · Tríceps",
+   note:"Empurrão do corpo. Nada acima da cabeça: protege o ombro esquerdo. Roda A → B → C e repete na semana.",
    ex:[
-    {id:"puxada_neutra", name:"Puxada na polia frente", reps:"4×10", img:"puxada_neutra", mg:"Costas",
-     q:"puxada polia frente pegada neutra execução correta",
-     sh:"Pegada neutra. Não force o ombro no fim do movimento.",
-     alts:[{name:"Puxada pegada aberta", img:"puxada_aberta", q:"puxada polia pegada aberta execução correta"}]},
-    {id:"pullover_polia", name:"Pullover na polia", reps:"3×12", img:"pullover_polia", mg:"Costas", isNew:true,
-     q:"pullover na polia execução correta",
-     sh:"Braço quase estendido, movimento controlado. Não jogue o braço para trás."},
-    {id:"remada_maquina", name:"Remada sentado na máquina", reps:"4×10", img:"remada_maquina", mg:"Costas",
-     q:"remada sentada máquina execução correta",
-     alts:[{name:"Remada baixa na polia", img:"remada_baixa", q:"remada baixa polia execução correta"}]},
-    {id:"remada_serrote", name:"Remada unilateral com halter (serrote)", reps:"3×12", img:"remada_serrote", mg:"Costas",
-     q:"remada unilateral com halter serrote execucao correta",
-     sh:"Apoia a mão e o joelho no banco. Puxa o cotovelo rente ao corpo, sem girar o ombro."},
-    {id:"supino_halteres", name:"Supino com halteres", reps:"4×12", img:"supino_halteres", mg:"Peito",
+    {id:"supino_maquina", name:"Supino máquina", reps:"4×10", img:"supino_maquina", mg:"Peito",
+     q:"supino máquina execução correta",
+     sh:"Ajuste o banco para o punho ficar na linha do peito.",
+     alts:[{name:"Supino com halteres", img:"supino_halteres", q:"supino reto com halteres execução correta",
+            sh:"Pare quando o cotovelo chegar na linha do peito."}]},
+    {id:"supino_halteres", name:"Supino com halteres", reps:"3×12", img:"supino_halteres", mg:"Peito",
      q:"supino reto com halteres execução correta",
      sh:"Pare quando o cotovelo chegar na linha do peito. Mais fundo que isso força o ombro.",
-     alts:[{name:"Supino na máquina", img:"supino_maquina", q:"supino máquina execução correta",
-            sh:"Ajuste o banco para o punho ficar na linha do peito."}]},
-    {id:"rosca_direta", name:"Rosca direta", reps:"3×12", img:"rosca_direta", mg:"Bíceps",
-     q:"rosca direta barra execução correta"},
-    {id:"triceps_corda", name:"Tríceps corda na polia", reps:"3×12", img:"triceps_corda", mg:"Tríceps", isNew:true,
+     alts:[{name:"Supino na máquina", img:"supino_maquina", q:"supino máquina execução correta"}]},
+    {id:"elev_lateral", name:"Elevação lateral", reps:"4×15", img:"elev_lateral", mg:"Ombro",
+     q:"elevação lateral halteres execução correta",
+     sh:"Peso leve e não passe da linha do ombro. Atenção redobrada no braço esquerdo."},
+    {id:"triceps_polia", name:"Tríceps polia", reps:"3×12", img:"triceps_polia", mg:"Tríceps",
+     q:"tríceps pushdown polia execução correta"},
+    {id:"triceps_corda", name:"Tríceps corda na polia", reps:"3×12", img:"triceps_corda", mg:"Tríceps",
      q:"triceps corda polia execucao correta",
      alts:[{name:"Tríceps coice com halter", img:"triceps_coice", q:"triceps coice kickback halter execucao correta"}]},
     {id:"prancha", name:"Prancha frontal", reps:"3×45s", img:"prancha", mg:"Core", noload:true,
      q:"prancha frontal execução correta"}
    ]},
 
- { id:"ter", tab:"Ter", wd:2, title:"Cardio HIIT", tag:"Queima", cardio:true,
-   note:"A bike poupa o joelho, então é a primeira opção. Na esteira, 8 km/h no forte e reduza se o joelho reclamar.",
-   protocol:[["Aquecimento","5 min leve"],["HIIT","1 min forte / 1 min leve × 8"],["Desaquecimento","5 min leve"]],
-   q:"bike ergométrica HIIT iniciante como fazer" },
+ { id:"b", tab:"B", wd:null, title:"Treino B — Puxar", tag:"Costas · Bíceps",
+   note:"Puxada em primeiro lugar para poupar o ombro esquerdo. Suba a carga quando as séries ficarem fáceis.",
+   ex:[
+    {id:"puxada_neutra", name:"Puxada na polia frente", reps:"4×10", img:"puxada_neutra", mg:"Costas",
+     q:"puxada polia frente pegada neutra execução correta",
+     sh:"Pegada neutra. Não force o ombro no fim do movimento.",
+     alts:[{name:"Puxada pegada aberta", img:"puxada_aberta", q:"puxada polia pegada aberta execução correta"}]},
+    {id:"remada_maquina", name:"Remada sentado na máquina", reps:"4×10", img:"remada_maquina", mg:"Costas",
+     q:"remada sentada máquina execução correta",
+     alts:[{name:"Remada baixa na polia", img:"remada_baixa", q:"remada baixa polia execução correta"}]},
+    {id:"remada_serrote", name:"Remada unilateral com halter (serrote)", reps:"3×12", img:"remada_serrote", mg:"Costas",
+     q:"remada unilateral com halter serrote execucao correta",
+     sh:"Apoia a mão e o joelho no banco. Puxa o cotovelo rente ao corpo, sem girar o ombro."},
+    {id:"pullover_polia", name:"Pullover na polia", reps:"3×12", img:"pullover_polia", mg:"Costas",
+     q:"pullover na polia execução correta",
+     sh:"Braço quase estendido, movimento controlado. Não jogue o braço para trás."},
+    {id:"rosca_direta", name:"Rosca direta", reps:"3×12", img:"rosca_direta", mg:"Bíceps",
+     q:"rosca direta barra execução correta"},
+    {id:"rosca_scott", name:"Rosca Scott com halter", reps:"3×12", img:"rosca_scott", mg:"Bíceps",
+     q:"rosca scott com halter execução correta",
+     sh:"O apoio no banco corta a compensação do ombro.",
+     alts:[{name:"Rosca direta", img:"rosca_direta", q:"rosca direta barra execução correta"}]},
+    {id:"abd_bicicleta", name:"Abdominal bicicleta", reps:"3×20", img:"abd_bicicleta", mg:"Abdômen", noload:true,
+     q:"abdominal bicicleta execução correta"}
+   ]},
 
- { id:"qua", tab:"Qua", wd:3, title:"Lower", tag:"Perna segura",
+ { id:"c", tab:"C", wd:null, title:"Treino C — Perna", tag:"Perna segura pro joelho",
    note:"Comece leve. Glúteo forte tira carga do joelho. Doeu, parou.",
    ex:[
     {id:"elev_pelvica", name:"Elevação pélvica", reps:"4×15", img:"elev_pelvica", mg:"Glúteo",
@@ -501,36 +531,9 @@ const days = [
      q:"abdominal infra execução correta"}
    ]},
 
- { id:"qui", tab:"Qui", wd:4, title:"Futebol", tag:"Cardio", rest:true,
-   note:"Sem academia hoje. Uma hora antes do jogo: banana com pão e ovo. Nunca vá em jejum.",
-   protocol:[["Durante o dia","Descanso"],["1h antes","Banana + pão com ovo"],["Depois do jogo","2 ovos ou atum"]] },
-
- { id:"sex", tab:"Sex", wd:5, title:"Upper B", tag:"Ombro + Braço",
-   note:"Nada acima da cabeça e nada de elevação frontal pesada. É o que protege o ombro esquerdo.",
-   ex:[
-    {id:"supino_maquina", name:"Supino máquina", reps:"4×10", img:"supino_maquina", mg:"Peito",
-     q:"supino máquina execução correta",
-     sh:"Ajuste o banco para o punho ficar na linha do peito.",
-     alts:[{name:"Supino com halteres", img:"supino_halteres", q:"supino reto com halteres execução correta",
-            sh:"Pare quando o cotovelo chegar na linha do peito."}]},
-    {id:"puxada_aberta", name:"Puxada polia pegada aberta", reps:"4×10", img:"puxada_aberta", mg:"Costas",
-     q:"puxada polia pegada aberta execução correta",
-     alts:[{name:"Puxada pegada neutra", img:"puxada_neutra", q:"puxada polia pegada neutra execução correta"}]},
-    {id:"elev_lateral", name:"Elevação lateral", reps:"4×15", img:"elev_lateral", mg:"Ombro",
-     q:"elevação lateral halteres execução correta",
-     sh:"Peso leve e não passe da linha do ombro. Atenção redobrada no braço esquerdo."},
-    {id:"remada_baixa", name:"Remada baixa", reps:"3×12", img:"remada_baixa", mg:"Costas",
-     q:"remada baixa polia execução correta",
-     alts:[{name:"Remada sentado na máquina", img:"remada_maquina", q:"remada sentada máquina execução correta"}]},
-    {id:"triceps_polia", name:"Tríceps polia", reps:"3×12", img:"triceps_polia", mg:"Tríceps",
-     q:"tríceps pushdown polia execução correta"},
-    {id:"rosca_scott", name:"Rosca Scott com halter", reps:"3×12", img:"rosca_scott", mg:"Bíceps", isNew:true,
-     q:"rosca scott com halter execução correta",
-     sh:"O apoio no banco corta a compensação do ombro.",
-     alts:[{name:"Rosca direta", img:"rosca_direta", q:"rosca direta barra execução correta"}]},
-    {id:"abd_bicicleta", name:"Abdominal bicicleta", reps:"3×20", img:"abd_bicicleta", mg:"Abdômen", noload:true,
-     q:"abdominal bicicleta execução correta"}
-   ]},
+ { id:"futebol", tab:"Futebol", wd:null, title:"Futebol + parte de cima", tag:"Cardio · Upper", rest:true,
+   note:"Dia de jogo. Como a quinta já castiga o joelho, nada de perna: faça a parte de cima (Treino A ou B) antes ou depois. Uma hora antes do jogo: banana com pão e ovo. Nunca vá em jejum.",
+   protocol:[["Na academia","Treino A ou B (parte de cima)"],["1h antes do jogo","Banana + pão com ovo"],["Depois do jogo","2 ovos ou atum"]] },
 
  { id:"dieta", tab:"Dieta", wd:null, type:"diet", title:"Dieta do dia", tag:"~1.650 kcal · 117 g" },
  { id:"agua", tab:"Água", wd:null, type:"water", title:"Água", tag:"Meta 3,5 L" },
@@ -565,7 +568,7 @@ const WARMUPS = {
     {t:"Corrida leve progressiva", q:"aquecimento corrida leve antes do futebol"},
     {t:"Deslocamentos laterais", q:"aquecimento deslocamento lateral futebol"}]}
 };
-const WARM_BY_DAY = { seg:'upper', qua:'lower', sex:'upper', qui:'soccer' };
+const WARM_BY_DAY = { a:'upper', b:'upper', c:'lower', futebol:'soccer' };
 function warmupCard(d){
   const key = WARM_BY_DAY[d.id]; if(!key) return '';
   const w = WARMUPS[key]; const s = session();
@@ -649,6 +652,30 @@ function loadHistory(id){
   return out.slice(0,5);
 }
 const fmtDate = k => { const [y,m,d] = k.split('-'); return d+'/'+m; };
+function cardioHistory(){
+  const out = [];
+  Object.keys(LOG).sort().reverse().forEach(d=>{
+    const v = LOG[d] && LOG[d].cardio;
+    if(v) out.push({d, v});
+  });
+  return out.slice(0,5);
+}
+function cardioCard(){
+  const s = session();
+  const hist = cardioHistory();
+  const today = s.cardio;
+  const carried = (today === undefined || today === '') && hist.length;
+  const cur = carried ? hist[0].v : (today || '');
+  let h = '<div class="cardio-log">';
+  h += '<div class="cl-head"><span class="cl-ico">🏃</span><div class="cl-txt"><b>Cardio do dia</b>'
+     + '<span class="cl-sub">Meta: no mínimo 1 km · aumente aos poucos</span></div></div>';
+  h += '<div class="cl-in"><input type="number" inputmode="decimal" step="0.1" min="0" placeholder="—" value="'+cur+'" data-cardio="1"><span class="unit">km</span>';
+  h += '<span class="hist">' + (hist.length
+      ? (carried ? 'Última: '+hist[0].v+' km · tenta superar' : 'Última: <b>'+hist[0].v+' km</b> · '+fmtDate(hist[0].d))
+      : 'Primeira corrida') + '</span></div>';
+  h += '</div>';
+  return h;
+}
 
 /* ---------- render ---------- */
 const tabsEl = document.getElementById('tabs');
@@ -723,6 +750,7 @@ function renderDay(d){
   let h = '<div class="day-head"><div class="day-title">'+d.title+'</div><div class="day-tag">'+d.tag+'</div></div>';
   h += '<p class="day-note">'+d.note+'</p>';
   h += warmupCard(d);
+  h += cardioCard();
 
   if(d.ex){
     const s = session();
@@ -892,6 +920,12 @@ panelsEl.addEventListener('change', e => {
     if(v === '') delete s.loads[id]; else s.loads[id] = v;
     s.day = active.id; save();
   }
+  if(e.target.matches('[data-cardio]')){
+    const s = session();
+    const v = e.target.value.trim();
+    if(v === '') delete s.cardio; else s.cardio = v;
+    s.day = active.id; save();
+  }
   if(e.target.type === 'file' && e.target.files[0]) doImport(e.target.files[0]);
 });
 
@@ -1039,12 +1073,21 @@ function doImport(file){
 if(!storageOK) showBanner('O navegador bloqueou o salvamento. Nada do que você marcar vai ficar guardado.');
 
 /* ---------- login / nuvem ---------- */
+function nextWorkout(){
+  const order = ['a','b','c'];
+  let last = null;
+  Object.keys(LOG).sort().reverse().some(d => {
+    if(order.includes(LOG[d] && LOG[d].day)){ last = LOG[d].day; return true; }
+    return false;
+  });
+  return last ? order[(order.indexOf(last) + 1) % order.length] : 'a';
+}
 function updateHero(){
   const el = document.getElementById('heroToday'); if(!el) return;
   const wn = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'][wdToday];
-  const t = days.find(d => d.wd === wdToday);
-  if(!t){ el.innerHTML = '<span class="ht-ey">'+wn+'</span><b>Dia livre — ver dieta?</b>'; el.onclick = () => go('dieta'); }
-  else{ el.innerHTML = '<span class="ht-ey">Hoje · '+wn+'</span><b>'+t.title+'</b><span class="ht-tag">'+t.tag+'</span>'; el.onclick = () => go(t.id); }
+  const t = days.find(d => d.id === nextWorkout());
+  el.innerHTML = '<span class="ht-ey">'+wn+' · próximo treino</span><b>'+t.title+'</b><span class="ht-tag">'+t.tag+'</span>';
+  el.onclick = () => go(t.id);
 }
 async function enterApp(user){
   uid = user.id;
