@@ -1,4 +1,4 @@
-const CACHE = 'guia-treino-v9';
+const CACHE = 'guia-treino-v10';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.svg'];
 
 self.addEventListener('install', e => {
@@ -19,6 +19,23 @@ self.addEventListener('fetch', e => {
   const url = new URL(req.url);
   // dados do Supabase sempre pela rede (nunca cacheia)
   if (url.hostname.includes('supabase')) return;
+
+  // HTML / navegação: REDE PRIMEIRO, para a versão nova sempre chegar.
+  // Cache é só reserva quando estiver offline.
+  const isDoc = req.mode === 'navigate' || req.destination === 'document'
+    || url.pathname.endsWith('/') || url.pathname.endsWith('index.html');
+  if (isDoc) {
+    e.respondWith(
+      fetch(req).then(res => {
+        const copy = res.clone();
+        caches.open(CACHE).then(c => c.put('./index.html', copy).catch(() => {}));
+        return res;
+      }).catch(() => caches.match(req).then(hit => hit || caches.match('./index.html')))
+    );
+    return;
+  }
+
+  // demais assets (imagens, manifest, ícone): cache primeiro
   e.respondWith(
     caches.match(req).then(hit => hit || fetch(req).then(res => {
       const copy = res.clone();
