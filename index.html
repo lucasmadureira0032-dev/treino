@@ -385,7 +385,7 @@
   <footer>
     Fotos do free-exercise-db (yuhonas), domínio público sob Unlicense.<br>
     Sentiu dor, pare. Confirme as cargas com o ortopedista.<br>
-    <span style="opacity:.7">versão 13</span>
+    <span style="opacity:.7">versão 14</span>
   </footer>
 </div>
 
@@ -430,7 +430,7 @@ let WEIGHTS = read('guia.weights', {}); // { "2026-08-03": 86.3 }
 const TRIP = { date:"2027-01-02", label:"Jeri" };   // data da viagem
 const WEIGHT_GOAL = { start:86.3, target:72 };
 
-const todayKey = () => new Date().toISOString().slice(0,10);
+const todayKey = () => { const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
 function session(){
   const k = todayKey();
   if(!LOG[k]) LOG[k] = { sets:{}, loads:{}, note:"", day:null };
