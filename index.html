@@ -229,7 +229,9 @@
   header{padding:26px 20px 20px;position:relative;overflow:hidden;background:var(--accent-grad);
     border-radius:0 0 28px 28px;box-shadow:var(--shadow-lg);}
   header::after{content:"";position:absolute;right:-50px;top:-50px;width:190px;height:190px;
-    border-radius:50%;background:rgba(255,255,255,.10);}
+    border-radius:50%;background:rgba(255,255,255,.10);pointer-events:none;}
+  header .top-row{position:relative;z-index:3;}
+  header h1,header .sub,.hero-today,.countdown{position:relative;z-index:2;}
   header .eyebrow{color:rgba(255,255,255,.78);}
   header h1{color:#fff;}
   header .sub{color:rgba(255,255,255,.88);}
@@ -383,7 +385,7 @@
   <footer>
     Fotos do free-exercise-db (yuhonas), domínio público sob Unlicense.<br>
     Sentiu dor, pare. Confirme as cargas com o ortopedista.<br>
-    <span style="opacity:.7">versão 11</span>
+    <span style="opacity:.7">versão 12</span>
   </footer>
 </div>
 
