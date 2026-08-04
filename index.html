@@ -646,19 +646,19 @@ function warmupCard(d){
 const DIET_GOAL = { kcal:2000, prot:160 };
 let MEALS = [
   {id:"cafe", name:"Pós-treino / Café", kcal:520, prot:48,
-   desc:"3 ovos + 1 scoop de whey + 30 g de aveia com 1 banana. Coma logo depois do treino — é a refeição que recupera o músculo."},
+   desc:"COM whey: 3 ovos + 1 scoop de whey + 30 g de aveia com 1 banana. SEM whey: 5 ovos + 30 g de aveia + 1 banana + 1 copo de leite. Coma logo depois do treino — é a refeição que recupera o músculo."},
   {id:"almoco", name:"Almoço", kcal:620, prot:48,
    desc:"170 g de frango ou patinho + 5 col. de arroz + 1 concha de feijão + salada à vontade + 1 fio de azeite."},
   {id:"lanche", name:"Lanche da tarde", kcal:330, prot:32,
-   desc:"1 scoop de whey + 1 iogurte natural (ou 1 fruta, ou 1 tapioca média)."},
+   desc:"COM whey: 1 scoop de whey + 1 iogurte natural. SEM whey: 1 lata de atum ou sardinha + 1 iogurte natural (ou 3 ovos cozidos + 1 fruta)."},
   {id:"jantar", name:"Jantar", kcal:540, prot:42,
    desc:"180 g de carne magra, peixe ou frango + 1 batata-doce média (ou 3 col. de arroz) + legumes."}
 ];
-let SHOPPING = ["Ovos","Frango","Patinho","Tilápia","Whey","Aveia","Arroz","Feijão","Batata-doce","Iogurte natural","Banana","Frutas","Legumes e verduras","Azeite"];
+let SHOPPING = ["Ovos","Frango","Patinho","Tilápia","Atum/Sardinha (lata)","Leite","Aveia","Arroz","Feijão","Batata-doce","Iogurte natural","Banana","Frutas","Legumes e verduras","Azeite","Whey (opcional)"];
 const WATER_GOAL = 3500, CUP = 250;
 const SUPPS = [
   {id:"creatina", ico:"💪", name:"Creatina", note:"3 a 5 g por dia, todos os dias, inclusive nos de descanso. Sem fase de saturação. A retenção de água nas primeiras semanas é normal e não é gordura."},
-  {id:"whey", ico:"🥛", name:"Whey", note:"2 scoops por dia: 1 no café pós-treino e 1 no lanche. É o que garante os 160 g de proteína e protege o músculo no déficit."}
+  {id:"whey", ico:"🥛", name:"Whey (opcional)", note:"Se conseguir comprar: 2 scoops/dia (1 no café, 1 no lanche) — é o jeito mais prático de bater os 160 g. Se não der, use as versões SEM whey da dieta (ovos, leite, atum, sardinha) e a proteína fecha igual. Não é obrigatório."}
 ];
 let RULES = [];      // conteúdo privado — carregado do Supabase depois do login
 
